@@ -1,6 +1,6 @@
 const URL = "https://pokeapi.co/api/v2/pokemon/";
 const axios = require('axios');
-
+const {Pokemon} = require('../db')
 const getPokeName = (req, res) => {
     const name = req.query.name;
     if (name) {
@@ -11,12 +11,21 @@ const getPokeName = (req, res) => {
                 if (data.name.toLowerCase() === name.toLowerCase()) {
                     const character = {
                         id: data.id,
-                        name: data.name,
-                        url: data.url,
+                        nombre: data.name,
+                        imagen: data.url,
+                        defensa:data.moves[0],
+                        ataque:data.moves[1],
+                        vida:  data.base_experience,
                     };
-
-                    res.status(200).json(character);
-                } else {
+                    Pokemon.create(character)
+                        .then(() => {
+                            res.status(200).json(character);
+                        })
+                        .catch((error) => {
+                            res.status(500).json({ message: "Error al guardar en la base de datos." });
+                        });
+                } 
+               else {
                     res.status(404).json({ message: "No se encontraron resultados." });
                 }
             })

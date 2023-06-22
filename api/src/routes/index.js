@@ -3,6 +3,7 @@ const { Router } = require('express');
 // Ejemplo: const authRouter = require('./auth.js');
 const { getPokemon }  = require('../controllers/getPokemon')
 const { getPokes }  = require('../controllers/getPokes.js')
+const { getMyPokes }  = require('../controllers/getMyPokes.js')
 const { getPokeName }  = require('../controllers/getPokeName.js')
 const { postPoke }  = require('../controllers/postPoke.js')
 
@@ -12,7 +13,8 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.get('/pokes', getPokes)
-router.get('/pokes/:id', getPokemon)
+router.get('/myPokes', getMyPokes)
+router.get('/poke/:id', getPokemon)
 router.get('/poke', getPokeName)
 router.post('/poke', postPoke)
 

@@ -6,6 +6,7 @@ const postPoke = async (req, res)=>{
     lastId++;
 try {
     const newPokemon = await Pokemon.create({
+        id: lastId,
         nombre,
         imagen,
         defensa,

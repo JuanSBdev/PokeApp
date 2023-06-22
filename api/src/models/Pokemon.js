@@ -17,6 +17,7 @@ module.exports = (sequelize) => {
     imagen: {
       type: DataTypes.STRING,
       allowNull: false,
+      default: 'https://cdn.dribbble.com/users/2104064/screenshots/8512308/artboardsnore_2x.png',
     },
     defensa: {
       type: DataTypes.STRING,
