@@ -49,6 +49,6 @@ Type.belongsToMany(Pokemon, {through: 'Reviews', foreignKey: 'pokemonId'})
 
 module.exports = {
    ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-   Pokemon,
+   Pokemon, Type,
    conn: sequelize, // para importart la conexión { conn } = require('./db.js');
 };
