@@ -22,7 +22,7 @@ const getPokeName = async (req, res) => {
       const newCharacter = await Pokemon.create(character,{
         include: [Type] 
       });
-      await newCharacter.addType(newCharacter.tipo.split(",").pop());
+      await newCharacter.addType(newCharacter.tipo.split(',').pop());
       res.status(200).json(newCharacter)
       
     } catch (error) {
