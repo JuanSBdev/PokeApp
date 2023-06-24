@@ -37,6 +37,11 @@ let capsEntries = entries.map((entry) => [
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
 
+// const PokemonModel = require('./models/Pokemon')
+// const TypeModel = require('./models/Type')
+// PokemonModel(sequelize)
+// TypeModel(sequelize)
+
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
 const { Pokemon, Type } = sequelize.models;
@@ -45,7 +50,7 @@ const { Pokemon, Type } = sequelize.models;
 // Product.hasMany(Reviews);
 Pokemon.belongsToMany(Type, {through: 'PokeType', foreignKey:'typeId'})
 
-Type.belongsToMany(Pokemon, {through: 'PokeType', foreignKey: 'pokemonId'})
+Type.belongsToMany(Pokemon, {through: 'PokeType', foreignKey:'pokemonId'})
 
 
 module.exports = {

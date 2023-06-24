@@ -7,8 +7,10 @@ const getPokeName = (req, res) => {
   const name = req.query.name;
   if (name) {
     axios.get(URL + name)
-      .then((response) => {
+      .then(async (response) => {
         const data = response.data;
+        const types = data.types.map((type) => type.type.name);
+
         const character = {
           id: data.id,
           nombre: data.name,
@@ -16,28 +18,28 @@ const getPokeName = (req, res) => {
           defensa: data.stats[3].base_stat,
           ataque: data.stats[4].base_stat,
           vida: data.stats[5].base_stat,
+          tipo: types.toString()
+
         };
 
-        Pokemon.findOrCreate({ where: { nombre: character.nombre }, defaults: character, include: [Type] })
-          .then(([createdPokemon, created]) => {
-            if (created) {
-              createdPokemon.getTypes()
-                .then(types => {
-                  character.tipo = types.map(tipo => tipo.name);
-                  res.status(200).json(createdPokemon);
-                })
-                .catch((error) => {
-                  console.log(error);
-                  res.status(500).json({ message: 'Error al obtener los tipos del Pokémon.' });
-                });
-            } else {
-              res.status(409).json({ message: 'El Pokémon ya existe en la base de datos.' });
-            }
-          })
-          .catch((error) => {
-            console.log(error);
-            res.status(500).json({ message: 'Error al guardar en la base de datos.' });
-          });
+        const [newPokemon, created] = await Pokemon.findOrCreate({
+          where: { id: data.id },
+          defaults: character,
+        });
+
+        if (!created) {
+          return res.status(409).json({ message: 'Este pokemon ya existe' });
+        }
+
+        const typesPromises = types.map(async (typeName) => {
+          const [newType] = await Type.findOrCreate({ where: { nombre: typeName } });
+          return newType;
+        });
+
+        const foundTypes = await Promise.all(typesPromises);
+        await newPokemon.setTypes(foundTypes);
+
+        res.status(200).json(newPokemon);
       })
       .catch((error) => {
         console.log(error);
