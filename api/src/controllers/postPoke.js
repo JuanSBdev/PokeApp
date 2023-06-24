@@ -13,15 +13,9 @@ try {
         defensa,
         ataque,
         vida,
-        tipo,
       });
-      // const types = await Type.findAll({
-      //   where: {
-      //     [Op.or]: types.map((nombre)=>({nombre}))
-      //   }
-      // });
   
-      // await newPokemon.setTypes(types);
+      await newPokemon.addType(tipo);
       res.status(200).json(newPokemon)
       
 } catch (error) {

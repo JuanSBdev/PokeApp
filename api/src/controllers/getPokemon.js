@@ -25,14 +25,14 @@ const getPokemon = async (req, res) => {
         if (!created) {
             return res.status(409).json({ message: 'Este pokemon ya existe' });
         }
-        console.log(types)
-       await Promise.all(
-        types.map(async (typeName) => {
-          const [newType] = await Type.findOrCreate({ where: { nombre: typeName } });
-          
-        })
-      );
-        res.status(200).json(character);
+        const selectedType = await Type.findOne({ where: { nombre: tipo } });
+
+        if (!selectedType) {
+          return res.status(404).json({ message: 'El tipo especificado no existe' });
+        }
+  
+        await newPokemon.addType(selectedType);
+        res.status(200).json(newPokemon);
     } catch (error) {
         res.status(500).json(error.message);
     }
