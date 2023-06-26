@@ -4,7 +4,7 @@ import { getCharacters } from './redux/actions';
 import './App.css';
 
 import Nav from './components/NavBar/Nav'
-import Card from './components/Card/Card'
+import Cards from './components/Card/Cards';
 
 function App() {
   const characters = useSelector(state => state.characters);
@@ -22,7 +22,7 @@ function App() {
     <div className="App">
 
       <Nav></Nav>
-      <Card/>
+      <Cards/>
 
       
     </div>

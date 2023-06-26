@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styles from "./Card.module.css";
-import { NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector} from 'react-redux';
 
 
 export default function Card(props) {
 let character = useSelector( state => state.characters)
-console.log(character)
 
 
 
@@ -21,7 +19,7 @@ console.log(character)
     </button>
     </div>
        <img className={styles.characterImg}
-             src={character.imagen}
+             src={props.imagen}
              alt='Pokeimagen'
         />
 
