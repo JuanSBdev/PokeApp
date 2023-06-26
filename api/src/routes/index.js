@@ -17,7 +17,7 @@ const router = Router();
 router.get('/type', getByType)
 router.get('/pokes', getPokes, )
 router.get('/myPokes', getMyPokes)
-router.get('/poke/:id',  getPokemon)
+router.get('/poke/:id', getPokemon)
 router.get('/poke', getPokeName)
 router.post('/poke', postPoke)
 
