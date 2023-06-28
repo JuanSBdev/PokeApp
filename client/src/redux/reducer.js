@@ -1,4 +1,4 @@
-import { GET_CHAR, ADD_CHAR } from "./action_types"
+import { GET_CHAR, ADD_CHAR, DEL_CHAR } from "./action_types"
 
 const initialState = {
     characters:[],
@@ -15,6 +15,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 characters: [...state.characters, action.payload]
+            }
+        case DEL_CHAR:
+            let updatedCharacters = state.characters.filter(ch => ch.id !== Number(action.payload))
+            return{
+                ...state,
+                characters: [...state.characters, updatedCharacters]
             }
         default:
             return {...state}

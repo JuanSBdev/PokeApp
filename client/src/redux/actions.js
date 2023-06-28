@@ -1,7 +1,8 @@
-import { GET_CHAR, ADD_CHAR } from "./action_types";
+import { GET_CHAR, ADD_CHAR, DEL_CHAR } from "./action_types";
 import axios from "axios";
-
+import { useSelector, useDispatch } from "react-redux";
 export const getCharacters = () => {
+  
   return async (dispatch) => {
     const endpoint = 'http://localhost:3001/myPokes';
     try {
@@ -32,3 +33,19 @@ export const addCharacter = (id) => {
       }
     };
   };
+
+  export const deleteCharacter = (id) => {
+    const endpoint = `http://localhost:3001/poke/${id}`
+    return async (dispatch) =>{
+      try {
+        await axios.delete(endpoint)
+        return dispatch({
+          type: DEL_CHAR,
+          payload: id,
+    });
+      } catch (error) {
+        console.log(error)
+      }
+
+    }
+  }

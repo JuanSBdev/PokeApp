@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getCharacters());
-  }, [dispatch]);
+  }, []);
 
   useEffect(() => {
     console.log(characters[0]?.map(i => i.nombre));

@@ -12,23 +12,18 @@ h2{
     justify-content: space-around;
     border-radius: 1rem;
     margin: 1%;
-    background-color: rgba(41, 117, 98, 0.89);
+	background-color: #ffe121; 
     box-shadow: 0 0 20px 2px;
-
+    z-index: 1;
 }
-.cardInfo{
-    display:contents;
+.curved {
+    border-radius: 1rem;
+    position: relative;
+    background: #2d6eae;
+    border-bottom-left-radius: 50% 37%;
+    border-bottom-right-radius: 50% 37%;
 }
-
-
-.btnsCard{
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    
-}
-.button{
+.buttonClose{
     position: absolute;
     background-color: rgba(237, 44, 44, 0.601);
     width: 20%;
@@ -40,9 +35,27 @@ h2{
     margin-top: 1%;
     border: 0;
 }
-:hover.button{
+.characterImg{
+    border-radius: 1rem;
+    width: 100%;
+    margin-bottom: -20px;
+}
+:hover.buttonClose{
     background-color: rgba(227, 25, 25, 0.931);
 
+}
+/* 
+.cardInfo{
+    display:contents;
+}
+
+
+.btnsCard{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    
 }
 .buttonFav{
     position: absolute;
@@ -56,8 +69,4 @@ h2{
 .btn_img{
     width: 90%;
 }
-.characterImg{
-    border-radius: 1rem;
-    width: 100%;
-}
-
+ */

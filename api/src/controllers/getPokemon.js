@@ -42,7 +42,6 @@ const deletePokemon = async (req, res) => {
     try {
       const { id } = req.params;
   
-      // Verificar si el Pokémon existe en la base de datos
       const pokemon = await Pokemon.findByPk(id);
       if (!pokemon) {
         return res.status(404).json({ message: 'El Pokémon no existe' });
