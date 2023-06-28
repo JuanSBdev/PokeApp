@@ -38,7 +38,26 @@ const getPokemon = async (req, res) => {
     }
 }
 
-module.exports = { getPokemon }
+const deletePokemon = async (req, res) => {
+    try {
+      const { id } = req.params;
+  
+      // Verificar si el Pokémon existe en la base de datos
+      const pokemon = await Pokemon.findByPk(id);
+      if (!pokemon) {
+        return res.status(404).json({ message: 'El Pokémon no existe' });
+      }
+  
+      // Eliminar el Pokémon de la base de datos
+      await pokemon.destroy();
+  
+      res.status(200).json({ message: 'Pokémon eliminado correctamente' });
+    } catch (error) {
+      res.status(500).json(error.message);
+    }
+  };
+
+module.exports = { getPokemon, deletePokemon }
 
 // const types = data.types.map((type) => type.type.name);
 //        await Promise.all(
