@@ -1,6 +1,6 @@
 import { GET_CHAR, ADD_CHAR, DEL_CHAR } from "./action_types";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+
 export const getCharacters = () => {
   
   return async (dispatch) => {
@@ -13,7 +13,7 @@ export const getCharacters = () => {
         payload: data
       });
     } catch (error) {
-      console.log(error);
+      console.log("Error:", error + error.message);
     }
   };
 };

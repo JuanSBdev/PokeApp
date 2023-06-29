@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './SearchBar.module.css'
-import { addCharacter } from "../../redux/actions";
+import { addCharacter, getCharacters } from "../../redux/actions";
 
 
 
@@ -10,6 +10,7 @@ export default function Nav(){
     const characters = useSelector(state => state.characters)
 
     const [id, setId ] = useState('')
+
     const handleInput = (e)=>{
         let {value} = e.target;
         setId(value)
@@ -18,8 +19,11 @@ export default function Nav(){
 
     const buscarCharacter = ()=>{
           dispatch(addCharacter(id));
-
     }
+
+useEffect(()=>{
+    dispatch(getCharacters())
+},[dispatch])
 
     return(
         <div className="div">

@@ -9,7 +9,7 @@ const reducer = (state = initialState, action) => {
         case GET_CHAR:
             return {
                 ...state,
-                characters: [...state.characters, action.payload]
+                characters: action.payload
             }
         case ADD_CHAR:
             return {
@@ -20,7 +20,7 @@ const reducer = (state = initialState, action) => {
             let updatedCharacters = state.characters.filter(ch => ch.id !== Number(action.payload))
             return{
                 ...state,
-                characters: [...state.characters, updatedCharacters]
+                characters: updatedCharacters
             }
         default:
             return {...state}

@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import styles from "./Card.module.css";
 import { useSelector, useDispatch} from 'react-redux';
-import { deleteCharacter } from '../../redux/actions';
+import { deleteCharacter, getCharacters } from '../../redux/actions';
 
 
 
 export default function Card(props) {
-   let character = useSelector( state => state.characters)
-   let dispatch = useDispatch()
+   
+   const dispatch = useDispatch()
+   const  character  = useSelector( state => state.characters);
+   let [characters, setCharacters ] = useState(character[0]);
+
+   
    
    let onClose = ()=>{
       dispatch(deleteCharacter(props.id))
+      console.log(characters)
+
    }
+   useEffect(() => {
+      dispatch(getCharacters()); 
+      console.log(characters)
+    }, [dispatch]);
 
    return (
       <div className={`${styles.divCarta}`}>
