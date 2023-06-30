@@ -1,31 +1,49 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "./Card.module.css";
-import { useSelector, useDispatch} from 'react-redux';
-import { deleteCharacter, getCharacters } from '../../redux/actions';
-
+import { useDispatch} from 'react-redux';
+import { deleteCharacter } from '../../redux/actions';
 
 
 export default function Card(props) {
-   
-   const dispatch = useDispatch()
-   const  character  = useSelector( state => state.characters);
-   let [characters, setCharacters ] = useState(character[0]);
+
+   let[backgroundType, setBackgroundType] = useState(styles.default)
 
    
-   
+   useEffect(()=>{
+
+      switch (props.tipos[0]) {
+         case 'grass':
+            setBackgroundType(styles.grass)
+            break;
+         case 'water':
+            setBackgroundType(styles.water)
+            break;
+         case 'bug':
+            setBackgroundType(styles.bug)
+            break;
+         case 'fire':
+            setBackgroundType(styles.fire)
+            break;
+         case 'poison':
+            setBackgroundType(styles.poison)
+            break;
+         default:
+            setBackgroundType(backgroundType)
+            break;
+      }
+    
+   })
+
+   let dispatch = useDispatch()
+      
    let onClose = ()=>{
       dispatch(deleteCharacter(props.id))
-      console.log(characters)
-
    }
-   useEffect(() => {
-      dispatch(getCharacters()); 
-      console.log(characters)
-    }, [dispatch]);
+
 
    return (
-      <div className={`${styles.divCarta}`}>
-         <section className={styles.curved}>
+      <div className={`${styles.divCarta}  `}>
+         <section className={`${styles.curved} ${backgroundType} `}>
 
       <div className={styles.btnsCard}>
    
@@ -36,7 +54,7 @@ export default function Card(props) {
          </button>
          <h2
                 className={styles.nombre}>
-                {props.name}
+                  <p>{props.name}</p>
          </h2>
       </div>
        <img className={styles.characterImg}
@@ -45,7 +63,19 @@ export default function Card(props) {
              />
              </section>  
       <div className={styles.cardInfo}>
-            <h2>HP: {props.vida}  </h2>
+         <div className={styles.uno}>
+            <p> {`HP: ${props.vida}`}  </p>
+            <p> ATK: {props.ataque} </p>
+
+         </div>
+         <div className={styles.dos} >
+            <p> Ha {props.habilidad[0]} </p>
+            <p> Tipo {props.tipos ? props.tipos[0] : 'Promedio'} </p>
+         </div>
+         <div className={styles.tres}>
+         <p>#{props.id}</p>
+
+         </div>
       </div>
  </div>
    )

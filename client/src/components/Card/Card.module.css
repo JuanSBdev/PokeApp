@@ -1,17 +1,19 @@
 h2{
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin: 2%;
+    position: absolute;
 }
 .divCarta{
     position: relative;
-    width: 20%;
-    height: 30%;
-    max-height: 500px;
+    width: 15%;
+    height: 100%;
+    max-height: 270px;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-around;
+    justify-content:baseline;
     border-radius: 1rem;
     margin: 1%;
+    padding-bottom: 1.5%;
 	background-color: #ffe121; 
     box-shadow: 0 0 20px 2px;
     z-index: 1;
@@ -32,17 +34,61 @@ h2{
     justify-content: center;
     border-radius: .5rem;
     margin-left: 74%;
-    margin-top: 1%;
     border: 0;
 }
+:hover.buttonClose{
+    background-color: rgba(227, 25, 25, 0.931);
+
+}
+.nombre{
+   padding-left: 1%;
+   color: #e4e6e5;
+}
+
 .characterImg{
     border-radius: 1rem;
     width: 100%;
     margin-bottom: -20px;
 }
-:hover.buttonClose{
-    background-color: rgba(227, 25, 25, 0.931);
+.cardInfo{
+    display: flex;
+   flex-flow: column;
+   font-size: .9rem;
+}
+.cardInfo .uno{
+display: flex;
+flex-flow: row nowrap;
+justify-content: space-around;
 
+}
+.cardInfo .dos{
+display: flex;
+flex-flow: row nowrap;
+justify-content: space-around;
+}
+.cardInfo .tres{
+display: flex;
+justify-content: center;
+margin-bottom: 10%;
+}
+
+.default{
+    background-color: red;
+}
+.grass{
+    background-color: #3f9054;
+}
+.water{
+    background-color: #3ca6b6;
+}
+.bug{
+    background-color: #c2b76f;
+}
+.fire{
+    background-color: #ed571b;
+}
+.poison{
+    background-color: #371c15;
 }
 /* 
 .cardInfo{
@@ -63,9 +109,7 @@ h2{
     background-color: rgba(240, 248, 255, 0);
     border: none;
 }
-.nombre{
-    color: darkblue;
-}
+
 .btn_img{
     width: 90%;
 }
