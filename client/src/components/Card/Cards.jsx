@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import Card from './Card';
 import styles from './Cards.module.css'
-import { getCharacters } from '../../redux/actions';
 export default function Cards(props) {
    const  character  = useSelector( state => state.characters);
 
