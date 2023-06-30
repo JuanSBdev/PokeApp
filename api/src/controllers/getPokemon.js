@@ -7,15 +7,23 @@ const getPokemon = async (req, res) => {
         let { id } = req.params;
         const response = await axios.get(URL + id)
         const data = response.data;
+
         const types = data.types.map((type) => type.type.name);
+        const habilidades = data.abilities.map((ab) => ab.ability.name )
+        const { base_stat: vida = 0 } = data.stats.find(stat => stat.stat.name === 'hp');
+        const { base_stat: defensa = 0} = data.stats.find(stat => stat.stat.name === 'defense')
+        const { base_stat: ataque = 0} = data.stats.find(stat => stat.stat.name === 'attack')
+
+
         const character = {
             id: data.id,
             nombre: data.name,
             imagen: data.sprites.front_default,
-            defensa: data.stats[3].base_stat,
-            ataque: data.stats[4].base_stat,
-            vida: data.stats[5].base_stat,
-            tipo: types.toString()
+            defensa: defensa,
+            ataque: ataque,
+            vida: vida,
+            habilidad: habilidades,
+            tipo: types
         };
         const [newPokemon, created] = await Pokemon.findOrCreate({
             where: { id: data.id },
@@ -23,15 +31,15 @@ const getPokemon = async (req, res) => {
         });
         
         if (!created) {
-            return res.status(409).json({ message: 'Este pokemon ya existe' });
+            return res.status(401).json({ message: 'Este pokemon ya existe' });
         }
-        const selectedType = await Type.findOne({ where: { nombre: tipo } });
+        // const selectedType = await Type.findOne({ where: { nombre: tipo } });
 
-        if (!selectedType) {
-          return res.status(404).json({ message: 'El tipo especificado no existe' });
-        }
+        // if (!selectedType) {
+        //   return res.status(404).json({ message: 'El tipo especificado no existe' });
+        // }
   
-        await newPokemon.addType(selectedType);
+        // await newPokemon.addType(selectedType);
         res.status(200).json(newPokemon);
     } catch (error) {
         res.status(500).json(error.message);

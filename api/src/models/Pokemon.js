@@ -35,6 +35,12 @@ module.exports = (sequelize) => {
       type: DataTypes.JSON,
       allowNull: false,
       defaultValue: 'No encontró'
+    },
+    habilidad:{
+      type: DataTypes.JSON,
+      allowNull: true,
+      defaultValue: 'No encontró'
+
     }
   },
   {
