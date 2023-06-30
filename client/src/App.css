@@ -48,3 +48,11 @@ a{
 .amarillo { 
 	background-color: #ffe121; 
 }
+:root{
+  background-image: url('https://img.freepik.com/free-vector/gradient-zoom-effect-background_23-2149721222.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+body::-webkit-scrollbar {
+  display: none;
+}

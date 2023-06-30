@@ -1,0 +1,36 @@
+.container{
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+/* lado input */
+
+.buscador{
+    width: 80%;
+    display: flex;
+}
+
+.input{
+    font-size: 1rem;
+    border-radius: 2rem;
+    padding: 2%;
+    width: 40%;
+    max-height: 50%;
+}
+
+.button_buscar {
+    width: 10%;
+    background-color: #ffffff00;
+    border: none;
+}
+.button_buscar img{
+    width: 100%;
+}
+
+/* Botonera */
+.botonera{
+    width: 20%;
+    display: flex;
+    flex-flow: row wrap;
+}
