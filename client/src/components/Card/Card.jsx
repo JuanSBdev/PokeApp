@@ -61,16 +61,21 @@ export default function Card(props) {
              src={props.imagen}
              alt='Pokeimagen'
              />
-             </section>  
-      <div className={styles.cardInfo}>
          <div className={styles.uno}>
             <p> {`HP: ${props.vida}`}  </p>
             <p> ATK: {props.ataque} </p>
 
          </div>
+             </section>  
+      <div className={styles.cardInfo}>
          <div className={styles.dos} >
-            <p> Ha {props.habilidad[0]} </p>
-            <p> Tipo {props.tipos ? props.tipos[0] : 'Promedio'} </p>
+            <div className={styles.habilidad}>
+               <p>Hability</p>
+               <p>{props.habilidad[0]} </p>
+            </div>
+            <div className={`${styles.tipoText} ${backgroundType}`}>
+            <p> {props.tipos ? props.tipos[0] : 'Promedio'} </p>
+            </div>
          </div>
          <div className={styles.tres}>
          <p>#{props.id}</p>
