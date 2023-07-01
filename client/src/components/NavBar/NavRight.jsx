@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react'
 import styles from './NavRight.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 
+
 import { addCharacter, getCharacters } from "../../redux/actions";
 
 let pokeBola = 'https://img.freepik.com/free-icon/pokeball_318-196468.jpg';
@@ -36,6 +37,7 @@ export default function NavRight() {
   return (
             <div className={styles.container}>
                 <div className={styles.buscador}>
+
                         <input className={styles.input}
                             placeholder={id}
                             type='search'
