@@ -5,6 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { addCharacter, getCharacters } from "../../redux/actions";
 
+import {Link} from 'react-router-dom'
+
 let pokeBola = 'https://img.freepik.com/free-icon/pokeball_318-196468.jpg';
 
 
@@ -52,8 +54,9 @@ export default function NavRight() {
                         </button>
                 </div>
                 <div className={styles.botonera}>
-                        <p>favorites</p>
-                        <p>Crear</p>
+                        <Link to={'/create'}>
+                            <p>Crea tu pokemon</p>
+                        </Link>
                 </div>
 
             </div>

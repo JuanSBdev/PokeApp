@@ -1,4 +1,4 @@
-import { GET_CHAR, ADD_CHAR, DEL_CHAR } from "./action_types"
+import { GET_CHAR, ADD_CHAR, DEL_CHAR, ADD_FAV, CREATE_CHAR } from "./action_types"
 
 const initialState = {
     characters:[],
@@ -21,6 +21,16 @@ const reducer = (state = initialState, action) => {
             return{
                 ...state,
                 characters: updatedCharacters
+            }
+        case ADD_FAV:
+            return{
+                ...state,
+                myFavorites:[...state.myFavorites, action.payload]
+            }
+        case CREATE_CHAR:
+            return {
+                ...state,
+                characters: [...state.characters, action.payload]
             }
         default:
             return {...state}

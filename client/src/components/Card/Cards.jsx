@@ -4,7 +4,6 @@ import styles from './Cards.module.css'
 export default function Cards(props) {
    const  character  = useSelector( state => state.characters);
 
-
     return (<div className={styles.Cards}>
       { character[0] && 
          character.map((character, index) => (<Card

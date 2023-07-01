@@ -43,6 +43,11 @@ h2{
     background-color: rgba(227, 25, 25, 0.931);
 
 }
+.btn_fav{
+    width: 50px;
+z-index: 4;
+    height: 30px;
+}
 .nombre{
    padding-left: 1%;
    color: #000000;

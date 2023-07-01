@@ -4,7 +4,7 @@ const axios = require('axios');
 let lastId = 0;
 
 const postPoke = async (req, res) => {
-  let { nombre, imagen, defensa, ataque, vida, tipo } = req.body;
+  let { nombre, imagen, defensa, ataque, vida, tipo, habilidad } = req.body;
   lastId++;
 
   try {
@@ -15,23 +15,25 @@ const postPoke = async (req, res) => {
       defensa,
       ataque,
       vida,
+      tipo,
+      habilidad
     });
 
     // Si el tipo es un array de números
-    if (Array.isArray(tipo)) {
-      tipo.forEach(async (typeId) => {
-        const existingType = await Type.findByPk(typeId);
-        if (existingType) {
-          await newPokemon.addType(existingType);
-        }
-      });
-    } else {
-      // Si el tipo es un solo número
-      const existingType = await Type.findByPk(tipo);
-      if (existingType) {
-        await newPokemon.addType(existingType);
-      }
-    }
+    // if (Array.isArray(tipo)) {
+    //   tipo.forEach(async (typeId) => {
+    //     const existingType = await Type.findByPk(typeId);
+    //     if (existingType) {
+    //       await newPokemon.addType(existingType);
+    //     }
+    //   });
+    // } else {
+    //   // Si el tipo es un solo número
+    //   const existingType = await Type.findByPk(tipo);
+    //   if (existingType) {
+    //     await newPokemon.addType(existingType);
+    //   }
+    // }
 
     res.status(200).json(newPokemon);
   } catch (error) {

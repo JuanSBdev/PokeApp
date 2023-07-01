@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from "./Card.module.css";
 import { useDispatch} from 'react-redux';
-import { deleteCharacter } from '../../redux/actions';
+import { deleteCharacter, addFav } from '../../redux/actions';
 
 
 export default function Card(props) {
@@ -39,12 +39,13 @@ export default function Card(props) {
    let onClose = ()=>{
       dispatch(deleteCharacter(props.id))
    }
-
+   // let addFavourite =()=>{
+   //    dispatch(addFav(props.id))
+   // }
 
    return (
       <div className={`${styles.divCarta}  `}>
          <section className={`${styles.curved} ${backgroundType} `}>
-
       <div className={styles.btnsCard}>
    
          <button className={styles.buttonClose}
@@ -52,6 +53,7 @@ export default function Card(props) {
          >
          X
          </button>
+         {/* <button className={styles.btn_fav}  onClick={addFavourite(props.id)}> </button> */}
          <h2
                 className={styles.nombre}>
                   <p>{props.name}</p>

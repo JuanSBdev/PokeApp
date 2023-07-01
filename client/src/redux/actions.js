@@ -1,4 +1,4 @@
-import { GET_CHAR, ADD_CHAR, DEL_CHAR } from "./action_types";
+import { GET_CHAR, ADD_CHAR, DEL_CHAR, ADD_FAV, CREATE_CHAR } from "./action_types";
 import axios from "axios";
 
 export const getCharacters = () => {
@@ -49,3 +49,18 @@ export const addCharacter = (id) => {
 
     }
   }
+export const createChar = (character)=>{
+  return async (dispatch) => {
+    const endpoint = `http://localhost:3001/poke`;
+    try {
+      const response = await axios.post(endpoint, character);
+      const data = response.data;
+      dispatch({
+        type: CREATE_CHAR,
+        payload: data,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
