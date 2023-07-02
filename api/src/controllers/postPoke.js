@@ -1,7 +1,7 @@
 const { Type, Pokemon } = require('../db');
 const { Op } = require('sequelize');
 const axios = require('axios');
-let lastId = 0;
+let lastId = 1281;
 
 const postPoke = async (req, res) => {
   let { nombre, imagen, defensa, ataque, vida, tipo, habilidad } = req.body;

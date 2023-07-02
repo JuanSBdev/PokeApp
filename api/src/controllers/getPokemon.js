@@ -23,7 +23,7 @@ const getPokemon = async (req, res) => {
             ataque: ataque,
             vida: vida,
             habilidad: habilidades,
-            tipo: types
+            // tipo: types
         };
         const [newPokemon, created] = await Pokemon.findOrCreate({
             where: { id: data.id },
