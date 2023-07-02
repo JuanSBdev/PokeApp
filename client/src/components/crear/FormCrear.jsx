@@ -50,56 +50,68 @@ export default function FormCrear() {
 
 
   return (
-    <div>
-      <h1>FormCrear</h1>
-      <form  className={Styles.container} onSubmit={handleSubmit}>
+    <div className={Styles.container}>
+      <h1>Crea tu pokemon</h1>
+      <form  className={Styles.inputs} onSubmit={handleSubmit}>
         <label>Nombre*:</label>
         <input type="text"
          name='nombre'
           onChange={handleChange}
-          placeholder='Ingresar el nombre para tu pokemon'   />
-        <p> {errors.nombre ? errors.nombre : null }  </p>
+          placeholder={`'Mi pokemon'`}   />
+        <p className={Styles.pError} > {errors.nombre ? errors.nombre : null }  </p>
 
         <label>imagen:</label>
         <input type="text"
          onChange={handleChange}
          placeholder='Ingresa el link de tu imagen'  />
-        <p> {errors.imagen ? errors.imagen : null }  </p>
+        <p className={Styles.pError} > {errors.imagen ? errors.imagen : null }  </p>
 
 
-        <label>Defensa:</label>
-        <input type="number" 
-        name='defensa'
-         onChange={handleChange}
-         placeholder='Ingresar valor numerico'  />
-        <p> {errors.defensa ? errors.defensa : null }  </p>
-        
+        <div className={Styles.formDos}>
+              <div className="defensa">
+              <label>Defensa:</label>
+               <input type="number" 
+               name='defensa'
+                onChange={handleChange}
+                placeholder='50'  />
+               <p className={Styles.pError}> {errors.defensa ? errors.   defensa : null }  </p>
+           </div>
 
-        <label>Ataque:</label>
-        <input type="number" 
-        name='ataque' 
-        onChange={handleChange}
-        placeholder='Ingresar valor numerico'   />
-        <p> {errors.ataque ? errors.ataque : null }  </p>
 
-        <label>Vida:</label>
-        <input type="number"
-         name='vida'
-          onChange={handleChange}
-          placeholder='Ingresar valor numerico'   />
-        <p> {errors.vida ? errors.vida : null }  </p>
+            <div className="ataque">
+                <label>Ataque:</label>
+                <input type="number" 
+                name='ataque' 
+                onChange={handleChange}
+                placeholder='50'   />
+                <p className={Styles.pError} > {errors.ataque ?     errors.   ataque : null }  </p>
+            </div>
 
-        <label>Habilidad:</label>
-        <input type="text"
-         name='habilidad'
-          onChange={handleChange}  />
-        <p> {errors.habilidad ? errors.habilidad : null }  </p>
+            <div className="vida">
+                  <label>Vida:</label>
+                  <input type="number"
+                   name='vida'
+                    onChange={handleChange}
+                    placeholder='100'   />
+                  <p className={Styles.pError}>  {errors.vida ? errors.vida :     null }  </p>
+
+            </div>
+           
+        </div>
 
         <label>Tipo:</label>
         <input type='text'
          name='tipo'
-          onChange={handleChange}  />
-        <p> {errors.tipo ? errors.tipo : null }  </p>
+          onChange={handleChange}
+          placeholder={`'fuego' `}  />
+        <p className={Styles.pError}> {errors.tipo ? errors.tipo : null }  </p>
+
+        <label>Habilidad:</label>
+        <input type="text"
+         name='habilidad'
+          onChange={handleChange}
+          placeholder={`"overgrow"`}  />
+        <p className={Styles.pError}> {errors.habilidad ? errors.habilidad : null }  </p>
 
         <button type='submit'></button>
       </form>
