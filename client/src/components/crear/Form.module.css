@@ -1,0 +1,10 @@
+.container{
+    display: flex;
+    flex-flow: column;
+}
+input{
+    height: 50px;
+}
+button{
+    height: 50px;
+}
