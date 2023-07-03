@@ -1,8 +1,20 @@
+
 .Cards{
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     justify-content: center;
     align-content: center;
     margin-top: 5%;
     width: 100%;
+}
+.card{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+.paginacion{
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
