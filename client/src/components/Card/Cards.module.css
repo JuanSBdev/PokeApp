@@ -16,5 +16,19 @@
 .paginacion{
     position: relative;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.paginacion button{
+    border-radius: 1rem;
+    border: none;
+    width: 5%;
+    margin-left: 1%;
+    background-color: rgb(54, 127, 229);
+    box-shadow: 0 0 10px 0;
+}
+
+.apagado{
+    background-color: aqua;
+    border: 10px;
 }

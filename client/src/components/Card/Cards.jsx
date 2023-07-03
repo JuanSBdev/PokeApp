@@ -23,31 +23,19 @@ export default function Cards(props) {
   
     // Cambia a la página anterior
     const previousPage = () => {
-      setCurrentPage(prevPage => prevPage - 1);
+      if( currentPage >= 2){
+
+         setCurrentPage(prevPage => prevPage - 1);
+      }
+     
     };
   
 
     return (<div className={styles.Cards}>
       
-
-         <div className={styles.card}>
-         { character[0] && 
-         currentCards.map((character, index) => (<Card
-            key={index} id={character.id}
-            name={character.nombre}
-            imagen ={character.imagen}
-            vida ={character.vida}
-            ataque = { character.ataque}
-            habilidad = {character.habilidad}
-            tipos = {character.tipo}
-         >
-            </Card>))
-      }
-
-         </div>
-         <div className={styles.paginacion}>
-               {currentPage > 1 && (
-                <button onClick={previousPage}>
+         <div className={`${styles.paginacion} `} >
+               {currentPage >= 1 && (
+                <button   onClick={previousPage}>
                         <span class="material-symbols-outlined">
                            arrow_back
                         </span>
@@ -63,6 +51,22 @@ export default function Cards(props) {
               )}
               
                
+         </div>
+
+         <div className={styles.card}>
+         { character[0] && 
+         currentCards.map((character, index) => (<Card
+            key={index} id={character.id}
+            name={character.nombre}
+            imagen ={character.imagen}
+            vida ={character.vida}
+            ataque = { character.ataque}
+            habilidad = {character.habilidad}
+            tipos = {character.tipo}
+         >
+            </Card>))
+      }
+
          </div>
 
          </div>);
