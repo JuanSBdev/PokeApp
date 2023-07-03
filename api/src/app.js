@@ -24,6 +24,7 @@ server.use((req, res, next) => {
   next();
 });
 
+const tipos = require('./controllers/getByType.js')
 server.use('/', routes);
 
 // Error catching endware.

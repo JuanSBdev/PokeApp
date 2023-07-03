@@ -9,7 +9,9 @@ const getPokemon = async (req, res) => {
         const data = response.data;
 
         const types = data.types.map((type) => type.type.name);
+
         const habilidades = data.abilities.map((ab) => ab.ability.name )
+
         const { base_stat: vida = 0 } = data.stats.find(stat => stat.stat.name === 'hp');
         const { base_stat: defensa = 0} = data.stats.find(stat => stat.stat.name === 'defense')
         const { base_stat: ataque = 0} = data.stats.find(stat => stat.stat.name === 'attack')
@@ -23,7 +25,7 @@ const getPokemon = async (req, res) => {
             ataque: ataque,
             vida: vida,
             habilidad: habilidades,
-            // tipo: types
+            tipo: types
         };
         const [newPokemon, created] = await Pokemon.findOrCreate({
             where: { id: data.id },
@@ -33,13 +35,24 @@ const getPokemon = async (req, res) => {
         if (!created) {
             return res.status(401).json({ message: 'Este pokemon ya existe' });
         }
-        // const selectedType = await Type.findOne({ where: { nombre: tipo } });
 
-        // if (!selectedType) {
-        //   return res.status(404).json({ message: 'El tipo especificado no existe' });
-        // }
-  
-        // await newPokemon.addType(selectedType);
+
+
+        for (const tipo of types) {
+          const selectedType = await Type.findOne({ where: { nombre: tipo } });
+    
+          if (!selectedType) {
+            return res.status(404).json({ message: 'El tipo especificado no existe' });
+          }
+    
+          await PokeType.create({
+            PokemonId: newPokemon.id,
+            TypeId: selectedType.id,
+          });
+        }
+
+
+
         res.status(200).json(newPokemon);
     } catch (error) {
         res.status(500).json(error.message);

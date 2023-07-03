@@ -76,7 +76,7 @@ export default function Card(props) {
                <p>{props.habilidad[0]} </p>
             </div>
             <div className={`${styles.tipoText} ${backgroundType}`}>
-            <p> {props.tipos ? props.tipos[0] : 'Promedio'} </p>
+            <p> {props.tipos ? props.tipos : 'Promedio'} </p>
             </div>
          </div>
          <div className={styles.tres}>
