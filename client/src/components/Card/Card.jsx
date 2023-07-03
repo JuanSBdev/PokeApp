@@ -11,7 +11,7 @@ export default function Card(props) {
    
    useEffect(()=>{
 
-      switch (props.tipos[0]) {
+      switch (props.tipos) {
          case 'grass':
             setBackgroundType(styles.grass)
             break;
@@ -73,7 +73,7 @@ export default function Card(props) {
          <div className={styles.dos} >
             <div className={styles.habilidad}>
                <p>Hability</p>
-               <p>{props.habilidad[0]} </p>
+               <p>{props.habilidad} </p>
             </div>
             <div className={`${styles.tipoText} ${backgroundType}`}>
             <p> {props.tipos ? props.tipos : 'Promedio'} </p>

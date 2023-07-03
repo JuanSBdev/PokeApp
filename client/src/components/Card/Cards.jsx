@@ -44,7 +44,7 @@ export default function Cards(props) {
                  
               {currentPage < totalPages && (
                 <button onClick={nextPage}>
-                  <span class="material-symbols-outlined">
+                  <span className="material-symbols-outlined">
                      arrow_forward
                   </span>   
                </button>
