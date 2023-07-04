@@ -1,6 +1,6 @@
 const URL = "https://pokeapi.co/api/v2/pokemon/";
 const axios = require('axios');
-const { Pokemon, Type, PokeType } = require('../db')
+const { Pokemon, Type } = require('../db')
 
 const getPokemon = async (req, res) => {
     try {
@@ -8,7 +8,7 @@ const getPokemon = async (req, res) => {
         const response = await axios.get(URL + id)
         const data = response.data;
 
-        const types = data.types.map((type) => type.type.name);
+        const types = data.types.map(type => type.type.name);
 
         const habilidades = data.abilities.map((ab) => ab.ability.name )
 
@@ -27,29 +27,21 @@ const getPokemon = async (req, res) => {
             habilidad: habilidades,
             tipo: types
         };
+        // const newPokemon = await Pokemon.create( character,{
+        //   include: [Type],
+
+        // })
+        // await newPokemon.addTypes(types);
         const [newPokemon, created] = await Pokemon.findOrCreate({
             where: { id: data.id },
             defaults: character,
+            include:[Type]
         });
         
         if (!created) {
             return res.status(401).json({ message: 'Este pokemon ya existe' });
         }
 
-
-
-        for (const tipo of types) {
-          const selectedType = await Type.findOne({ where: { nombre: tipo } });
-    
-          if (!selectedType) {
-            return res.status(404).json({ message: 'El tipo especificado no existe' });
-          }
-    
-          await PokeType.create({
-            PokemonId: newPokemon.id,
-            TypeId: selectedType.id,
-          });
-        }
 
 
 
@@ -79,19 +71,3 @@ const deletePokemon = async (req, res) => {
 
 module.exports = { getPokemon, deletePokemon }
 
-// const types = data.types.map((type) => type.type.name);
-//        await Promise.all(
-//         types.map(async (typeName) => {
-//           const [newType] = await Type.findOrCreate({ where: { nombre: typeName } });
-//           const [pokeType, pokeTypeCreated] = await PokeType.findOrCreate({
-//             where: { pokemonId: newPokemon.id, typeId: newType.id },
-//           });
-  
-//           if (!pokeTypeCreated) {
-//             console.log('Esta relación ya existe:', pokeType);
-//           } else {
-//             console.log('Nueva relación creada:', pokeType);
-//           }
-//         })
-//       );
-  
