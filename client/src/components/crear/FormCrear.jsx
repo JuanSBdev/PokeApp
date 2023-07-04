@@ -60,16 +60,16 @@ export default function FormCrear() {
           placeholder={`'Mi pokemon'`}   />
         <p className={Styles.pError} > {errors.nombre ? errors.nombre : null }  </p>
 
-        <label>imagen:</label>
+        {/* <label>imagen:</label>
         <input type="text"
          onChange={handleChange}
          placeholder='Ingresa el link de tu imagen'  />
-        <p className={Styles.pError} > {errors.imagen ? errors.imagen : null }  </p>
+        <p className={Styles.pError} > {errors.imagen ? errors.imagen : null }  </p> */}
 
 
         <div className={Styles.formDos}>
               <div className="defensa">
-              <label>Defensa:</label>
+              <label>Defensa:*</label>
                <input type="number" 
                name='defensa'
                 onChange={handleChange}
@@ -79,7 +79,7 @@ export default function FormCrear() {
 
 
             <div className="ataque">
-                <label>Ataque:</label>
+                <label>Ataque:*</label>
                 <input type="number" 
                 name='ataque' 
                 onChange={handleChange}
@@ -88,7 +88,7 @@ export default function FormCrear() {
             </div>
 
             <div className="vida">
-                  <label>Vida:</label>
+                  <label>Vida:*</label>
                   <input type="number"
                    name='vida'
                     onChange={handleChange}
@@ -100,22 +100,22 @@ export default function FormCrear() {
         </div>
 
         <div className={Styles.formTres}>
-              <div className="tipo">
-              <label>Tipo:</label>
-              <input type='text'
-               name='tipo'
-                onChange={handleChange}
-                placeholder={`'fuego' `}  />
-              <p className={Styles.pError}> {errors.tipo ? errors.tipo :        null }  </p>
+              <div className={Styles.tipo}>
+                    <label>Tipo:</label>
+                    <input type='text'
+                     name='tipo'
+                      onChange={handleChange}
+                      placeholder={`'fuego' `}  />
+                    
               </div>
 
-              <div className="habilidad">
-                <label>Habilidad:</label>
-                <input type="text"
-                 name='habilidad'
-                  onChange={handleChange}
-                  placeholder={`"overgrow"`}  />
-                <p className={Styles.pError}> {errors.habilidad ?     errors.       habilidad : null }  </p>
+              <div className={Styles.habilidad}>
+                      <label>Habilidad:</label>
+                      <input type="text"
+                       name='habilidad'
+                        onChange={handleChange}
+                        placeholder={`"overgrow"`}  />
+                      
               </div>
 
         </div>

@@ -31,6 +31,7 @@ label{
     font-size: 1rem;
     display: flex;
     flex-flow: column wrap;
+    justify-content: center;
 }
 .inputs input{
     border-radius: 10rem;
@@ -46,10 +47,21 @@ label{
 
 .formTres{
     display: flex;
-    width: 100%;
     flex-flow: row;
-    justify-content: center;
+    justify-content: space-around;
 }
+.formTres .tipo{
+display: flex;
+flex-flow: column wrap;
+justify-content: center;
+align-items: center;
+}
+.formTres .habilidad{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
 
 .btn_submit{
     width: 20%;
@@ -58,5 +70,6 @@ label{
     align-self: center;
     border-radius: 1REM;
     margin-top: 1%;
+    padding: 1%;
 }
  
