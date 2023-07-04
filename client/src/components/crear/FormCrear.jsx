@@ -39,7 +39,7 @@ export default function FormCrear() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
-      if(!errors.nombre) {
+      if(!errors.nombre && !errors.defensa && !errors.ataque) {
          dispatch(createChar(formValues))}
      else{
       console.log(errors)
@@ -121,6 +121,7 @@ export default function FormCrear() {
         </div>
 
         <button  className={Styles.btn_submit} type='submit'>CREAR</button>
+        <p className={`${Styles.pError}`} >{ errors.error ?  `${errors.error}*`: null }</p>
       </form>
 
 

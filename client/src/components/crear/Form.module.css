@@ -34,7 +34,7 @@ label{
     justify-content: center;
 }
 .inputs input{
-    border-radius: 10rem;
+    border-radius: .3rem;
     font-size: 1.3rem;
 }
 
