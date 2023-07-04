@@ -40,7 +40,15 @@ label{
 .formDos{
     display: flex;
     flex-flow: row nowrap;
-    width: 80%;
+    width: 99%;
+    align-self: center;
+}
+
+.formTres{
+    display: flex;
+    width: 100%;
+    flex-flow: row;
+    justify-content: center;
 }
 
 .btn_submit{
@@ -51,3 +59,4 @@ label{
     border-radius: 1REM;
     margin-top: 1%;
 }
+ 

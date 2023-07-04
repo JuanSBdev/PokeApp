@@ -99,19 +99,26 @@ export default function FormCrear() {
            
         </div>
 
-        <label>Tipo:</label>
-        <input type='text'
-         name='tipo'
-          onChange={handleChange}
-          placeholder={`'fuego' `}  />
-        <p className={Styles.pError}> {errors.tipo ? errors.tipo : null }  </p>
+        <div className={Styles.formTres}>
+              <div className="tipo">
+              <label>Tipo:</label>
+              <input type='text'
+               name='tipo'
+                onChange={handleChange}
+                placeholder={`'fuego' `}  />
+              <p className={Styles.pError}> {errors.tipo ? errors.tipo :        null }  </p>
+              </div>
 
-        <label>Habilidad:</label>
-        <input type="text"
-         name='habilidad'
-          onChange={handleChange}
-          placeholder={`"overgrow"`}  />
-        <p className={Styles.pError}> {errors.habilidad ? errors.habilidad : null }  </p>
+              <div className="habilidad">
+                <label>Habilidad:</label>
+                <input type="text"
+                 name='habilidad'
+                  onChange={handleChange}
+                  placeholder={`"overgrow"`}  />
+                <p className={Styles.pError}> {errors.habilidad ?     errors.       habilidad : null }  </p>
+              </div>
+
+        </div>
 
         <button  className={Styles.btn_submit} type='submit'>CREAR</button>
       </form>
