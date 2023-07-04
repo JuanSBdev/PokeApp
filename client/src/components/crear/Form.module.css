@@ -8,27 +8,33 @@
     font-family: 'Pokemon Solid', sans-serif;
 
 }
+h1{
+    -webkit-text-stroke: .2px rgb(242, 242, 242);
+
+}
 .pError{
     color: red;
     font-family:Verdana;
     font-size: 1rem;
 }
 .inputs p {
-    margin: -2%;
+    margin: 0%;
 
 }
 label{
+    font-size: 1rem;
     -webkit-text-stroke: .2px rgb(242, 242, 242);
 
 }
 .inputs{
     justify-content: center;
-    font-size: 1.4rem;
+    font-size: 1rem;
     display: flex;
     flex-flow: column wrap;
 }
 .inputs input{
     border-radius: 10rem;
+    font-size: 1.3rem;
 }
 
 .formDos{
@@ -37,4 +43,11 @@ label{
     width: 80%;
 }
 
-
+.btn_submit{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border-radius: 1REM;
+    margin-top: 1%;
+}

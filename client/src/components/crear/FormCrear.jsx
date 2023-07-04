@@ -113,7 +113,7 @@ export default function FormCrear() {
           placeholder={`"overgrow"`}  />
         <p className={Styles.pError}> {errors.habilidad ? errors.habilidad : null }  </p>
 
-        <button type='submit'></button>
+        <button  className={Styles.btn_submit} type='submit'>CREAR</button>
       </form>
 
 
