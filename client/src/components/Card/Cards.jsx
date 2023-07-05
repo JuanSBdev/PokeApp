@@ -34,9 +34,9 @@ export default function Cards(props) {
     return (<div className={styles.Cards}>
       
          <div className={`${styles.paginacion} `} >
-               {currentPage >= 1 && (
+               {currentPage >= 2 && (
                 <button   onClick={previousPage}>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined" >
                            arrow_back
                         </span>
                </button>
