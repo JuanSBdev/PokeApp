@@ -62,7 +62,7 @@ export default function Cards(props) {
             vida ={character.vida}
             ataque = { character.ataque}
             habilidad = {character.habilidad}
-            tipos = {character.tipo}
+            tipos = {character.tipo[0]}
          >
             </Card>))
       }
