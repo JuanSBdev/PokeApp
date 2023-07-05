@@ -54,7 +54,7 @@ export default function NavRight() {
                         </button>
                 </div>
                 <div className={styles.botonera}>
-                        <Link to={'/'}>
+                        <Link to={'/home'}>
                             <button>
                                 <p>HOME</p>
                             </button>

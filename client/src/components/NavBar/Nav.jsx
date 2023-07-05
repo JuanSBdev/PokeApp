@@ -15,7 +15,7 @@ export default function Nav(props){
 
     return(
         <div className={styles.container}>
-        <Link to={'/'}>
+        <Link to={'/home'}>
             <div className={styles.containerLeft}>
                 <img src={pokemonTitle} alt="" />
             </div>
