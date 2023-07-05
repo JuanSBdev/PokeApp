@@ -33,16 +33,14 @@ const getPokemon = async (req, res) => {
         // })
         // await newPokemon.addTypes(types);
         const [newPokemon, created] = await Pokemon.findOrCreate({
-            where: { id: data.id },
+            where: { nombre: data.name },
             defaults: character,
-            include:[Type]
+            // include:[Type]
         });
         
         if (!created) {
-         
-           res.status(201).json({ message: 'Este pokemon ya existe' });
+           res.status(400).json({ message: 'Este pokemon ya existe' });
         }
-
         res.status(200).json(newPokemon);
     } catch (error) {
         res.status(500).json(error.message);

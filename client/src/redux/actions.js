@@ -1,20 +1,23 @@
 import { GET_CHAR, ADD_CHAR, DEL_CHAR, CREATE_CHAR, GET_TYPES } from "./action_types";
 import axios from "axios";
+ 
+export const getTypes = ()=>{
 
-// export const getTypes = async (req, res)=>{
-//   let endpoint = 'http://localhost:3001/type'
-//   try {
-//     const response = await axios(endpoint)
-//     let data = response.data
-//       dispatch({
-//         type: GET_TYPES,
-//         payload: data
-//       });
-
-//   } catch (error) {
-//     console.log(error.message)
-//   }
-// }
+  return async (dispatch) => {
+    let endpoint = 'http://localhost:3001/type'
+    try {
+      const response = await axios(endpoint)
+      let data = response.data
+      dispatch({
+        type: GET_TYPES,
+        payload: data
+      });
+      
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+}
 
 export const getCharacters = () => {
   
