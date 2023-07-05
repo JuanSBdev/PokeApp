@@ -31,7 +31,7 @@ export const getCharacters = () => {
         payload: data
       });
     } catch (error) {
-      console.log("Error:", error + error.message);
+      console.log(error)
     }
   };
 };

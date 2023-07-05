@@ -41,7 +41,12 @@ const getPokemon = async (req, res) => {
         if (!created) {
            res.status(400).json({ message: 'Este pokemon ya existe' });
         }
-        res.status(200).json(newPokemon);
+        else if(created){
+          res.status(200).json(newPokemon);
+        }
+        else{
+          res.status(200).json(character)
+        }
     } catch (error) {
         res.status(500).json(error.message);
     }
