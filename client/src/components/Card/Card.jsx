@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from "./Card.module.css";
 import { useDispatch} from 'react-redux';
 import { deleteCharacter, addFav } from '../../redux/actions';
+import { Link } from 'react-router-dom';
 
 
 export default function Card(props) {
@@ -54,10 +55,12 @@ export default function Card(props) {
          X
          </button>
          {/* <button className={styles.btn_fav}  onClick={addFavourite(props.id)}> </button> */}
+         <Link to={`/detalle/${props.id}`}>
          <h2
                 className={styles.nombre}>
                   <p>{props.name}</p>
          </h2>
+                   </Link>
       </div>
        <img className={styles.characterImg}
              src={props.imagen}

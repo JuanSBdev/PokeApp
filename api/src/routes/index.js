@@ -7,7 +7,7 @@ const { getMyPokes }  = require('../controllers/getMyPokes.js')
 const { getPokeName }  = require('../controllers/getPokeName.js')
 const { postPoke }  = require('../controllers/postPoke.js')
 const { getByType } = require('../controllers/getByType')
-
+const { getInfo } = require ('../controllers/getInfo')
 
 const router = Router();
 
@@ -15,9 +15,10 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 
 router.get('/type', getByType)
-router.get('/pokes', getPokes, )
+router.get('/pokes', getPokes )
 router.get('/myPokes', getMyPokes)
 router.get('/poke/:id', getPokemon)
+router.get('/info/:id', getInfo)
 router.delete('/poke/:id', deletePokemon)
 router.get('/poke', getPokeName)
 router.post('/poke', postPoke)
