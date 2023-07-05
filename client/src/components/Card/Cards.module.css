@@ -23,12 +23,30 @@
     border-radius: 1rem;
     border: none;
     width: 5%;
-    margin-left: 1%;
+    margin-left: 4%;
     background-color: rgb(54, 127, 229);
     box-shadow: 0 0 10px 0;
 }
 
-.apagado{
+/* .apagado{
     background-color: aqua;
     border: 10px;
+} */
+.filters{
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 2%;
+    }
+.filters button{
+    margin: 1%;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 0 10px 0;
+    background-color: #4e87e1;
+}
+.active{
+    transform: scale(1.2);
 }
