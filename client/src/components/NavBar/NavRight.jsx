@@ -54,8 +54,15 @@ export default function NavRight() {
                         </button>
                 </div>
                 <div className={styles.botonera}>
+                        <Link to={'/'}>
+                            <button>
+                                <p>HOME</p>
+                            </button>
+                        </Link>
                         <Link to={'/create'}>
-                            <p>Crea tu pokemon</p>
+                            <button>
+                                <p>Crear pokemon</p>
+                            </button>
                         </Link>
                 </div>
 
