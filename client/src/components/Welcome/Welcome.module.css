@@ -13,5 +13,11 @@
     font-family: 'Pokemon Solid', sans-serif;
 }
 .p{
-    color: rgb(36, 106, 186);
+    color: rgb(24, 80, 145);
+}
+.btn_start{
+    border-radius: 1rem;
+    padding: 20%;
+    background-color: rgb(229, 213, 45);
+    box-shadow: 0 0 10px 0;
 }
