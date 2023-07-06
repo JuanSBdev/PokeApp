@@ -1,5 +1,5 @@
 import './App.css';
-import {  Routes, Route, Switch, Link } from 'react-router-dom';
+import {  Routes, Route, Switch, Link, useLocation } from 'react-router-dom';
 import Nav from './components/NavBar/Nav';
 import Cards from './components/Card/Cards';
 import FormCrear from './components/crear/FormCrear';
@@ -8,9 +8,12 @@ import Welcome from './components/Welcome/Welcome';
 
 
 function App() {
+
+let path = useLocation()
+
   return (
     <div className="App">
-        <Nav/>
+       { path.pathname !== '/' && <Nav/>}
         <Routes>
           <Route path='/' element={<Welcome/>} />
           <Route path="/home" element={<Cards/>} />
