@@ -12,7 +12,6 @@ export default function Cards(props) {
 
   // Ordenar
   const [sortBy, setSortBy] = useState('original');
-  const [sortByTipo, setSortByTipo] = useState(false); // Nuevo estado
 
   const currentCards = character
     .slice(indexOfFirstCard, indexOfLastCard)
@@ -21,7 +20,7 @@ export default function Cards(props) {
         return a.nombre.localeCompare(b.nombre);
       } else if (sortBy === 'vida') {
         return b.vida - a.vida;
-      } else if (sortByTipo) { // Nuevo bloque de ordenamiento por tipo
+      } else if (sortBy === 'tipo') { // Nuevo bloque de ordenamiento por tipo
         return a.tipo[0].localeCompare(b.tipo[0]);
       } else {
         return 0;
@@ -43,26 +42,26 @@ export default function Cards(props) {
   const handleSortByNombre = () => {
     if (sortBy !== 'nombre') {
       setSortBy('nombre');
-      setSortByTipo(false); // Desactivar ordenamiento por tipo
     }
   };
 
   const handleSortByOriginal = () => {
     if (sortBy !== 'original') {
       setSortBy('original');
-      setSortByTipo(false); // Desactivar ordenamiento por tipo
     }
   };
 
   const handleSort = () => {
     if (sortBy !== 'vida') {
       setSortBy('vida');
-      setSortByTipo(false); // Desactivar ordenamiento por tipo
     }
   };
 
   const handleSortByTipo = () => {
-    setSortByTipo(!sortByTipo);
+    if(sortBy != 'tipo'){
+      setSortBy('tipo');
+
+    }
   };
 
   return (
@@ -109,7 +108,7 @@ export default function Cards(props) {
         <button
           onClick={handleSortByTipo}
           className={`${styles.filterButton} ${
-            sortByTipo ? styles.active : ''
+            sortBy === 'tipo' ? styles.active : ''
           }`}
         >
           Tipo
