@@ -36,13 +36,27 @@ export default function FormCrear() {
     
   };
 
+  let handleTipo = (e) => {
+    const {  value } = e.target;
+    setFormValues((prevValues) => {
+      const newTipo = [value, ...prevValues.tipo];
+      return {
+        ...prevValues,
+        tipo: newTipo
+      };
+    });
+  };
+  
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
-      if(!errors.nombre && !errors.defensa && !errors.ataque) {
+      if( !errors.error && !errors.nombre && !errors.defensa && !errors.ataque) {
          dispatch(createChar(formValues))}
      else{
       console.log(errors)
+      alert('Revisa tu formulario')
      }
 
   };
@@ -104,7 +118,7 @@ export default function FormCrear() {
                     <label>Tipo:</label>
                     <input type='text'
                      name='tipo'
-                      onChange={handleChange}
+                      onChange={handleTipo}
                       placeholder={`'fuego' `}  />
                     
               </div>

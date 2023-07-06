@@ -13,7 +13,7 @@ export default function Welcome() {
   }, [])
   return (
     <div className={styles.container}>
-      <h1 className={styles.h1}>Bienvenido a la PokeApi</h1>
+      <h1 className={styles.h1}>Bienvenidx a la PokeApi</h1>
       <Link to='/home'><button className={styles.btn_start}>
                           INICIAR
                         </button>

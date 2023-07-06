@@ -50,3 +50,8 @@
 .active{
     transform: scale(1.2);
 }
+.p_agregar{
+    font-size: 2rem;
+    display: flex;
+    margin-top: 10%;
+}
