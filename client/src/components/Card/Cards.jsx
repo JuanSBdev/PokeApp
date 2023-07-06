@@ -4,33 +4,29 @@ import Card from './Card';
 import styles from './Cards.module.css';
 
 export default function Cards(props) {
-   const [currentPage, setCurrentPage] = useState(1);
-   
-   const character = useSelector(state => state.characters);
-   
-   const cardsPerPage = 12;
-   const indexOfLastCard = currentPage * cardsPerPage;
-   const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-   
-   // Ordenar
-   const [sortBy, setSortBy] = useState('original'); 
+  const [currentPage, setCurrentPage] = useState(1);
+  const character = useSelector(state => state.characters);
+  const cardsPerPage = 12;
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
 
-   
-   const currentCards = character
+  // Ordenar
+  const [sortBy, setSortBy] = useState('original');
+  const [sortByTipo, setSortByTipo] = useState(false); // Nuevo estado
+
+  const currentCards = character
     .slice(indexOfFirstCard, indexOfLastCard)
     .sort((a, b) => {
       if (sortBy === 'nombre') {
         return a.nombre.localeCompare(b.nombre);
-      }
-      else if(sortBy === 'vida'){
-        return b.vida - a.vida
-           }
-      else {
-        // como estaba originalmente
+      } else if (sortBy === 'vida') {
+        return b.vida - a.vida;
+      } else if (sortByTipo) { // Nuevo bloque de ordenamiento por tipo
+        return a.tipo[0].localeCompare(b.tipo[0]);
+      } else {
         return 0;
       }
     });
-  
 
   const totalPages = Math.ceil(character.length / cardsPerPage);
 
@@ -47,22 +43,27 @@ export default function Cards(props) {
   const handleSortByNombre = () => {
     if (sortBy !== 'nombre') {
       setSortBy('nombre');
+      setSortByTipo(false); // Desactivar ordenamiento por tipo
     }
   };
 
   const handleSortByOriginal = () => {
     if (sortBy !== 'original') {
       setSortBy('original');
+      setSortByTipo(false); // Desactivar ordenamiento por tipo
     }
   };
 
+  const handleSort = () => {
+    if (sortBy !== 'vida') {
+      setSortBy('vida');
+      setSortByTipo(false); // Desactivar ordenamiento por tipo
+    }
+  };
 
-let handleSort = () => {
-  if (sortBy !== 'vida') {
-    setSortBy('vida');
-  }
-};
-  
+  const handleSortByTipo = () => {
+    setSortByTipo(!sortByTipo);
+  };
 
   return (
     <div className={styles.Cards}>
@@ -99,35 +100,43 @@ let handleSort = () => {
         </button>
         <button
           onClick={handleSort}
-          className={`${styles.filterButton} ${ sortBy === 'vida' ? styles.active : ''}`}
+          className={`${styles.filterButton} ${
+            sortBy === 'vida' ? styles.active : ''
+          }`}
         >
           +HP
         </button>
-        
-      </div>
+        <button
+          onClick={handleSortByTipo}
+          className={`${styles.filterButton} ${
+            sortByTipo ? styles.active : ''
+          }`}
+        >
+          Tipo
+        </button>       </div>
 
       <div className={styles.card}>
-  {character ? (
-    character[0] ? (
-      currentCards.map((character, index) => (
-        <Card
-          key={index}
-          id={character.id}
-          name={character.nombre}
-          imagen={character.imagen}
-          vida={character.vida}
-          ataque={character.ataque}
-          habilidad={character.habilidad}
-          tipos={character.tipo[0]}
-        ></Card>
-      ))
-    ) : (
-      <p className={styles.p_agregar} > No has agregado personajes </p>
-    )
-  ) : (
-    <h1>Cargando personajes...</h1>
-  )}
-</div>
+        {character ? (
+          character[0] ? (
+            currentCards.map((character, index) => (
+              <Card
+                key={index}
+                id={character.id}
+                name={character.nombre}
+                imagen={character.imagen}
+                vida={character.vida}
+                ataque={character.ataque}
+                habilidad={character.habilidad}
+                tipos={character.tipo[0]}
+              ></Card>
+            ))
+          ) : (
+            <p className={styles.p_agregar}>No has agregado personajes</p>
+          )
+        ) : (
+          <h1>Cargando personajes...</h1>
+        )}
+      </div>
     </div>
   );
 }
