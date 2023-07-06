@@ -79,7 +79,7 @@ export default function Cards(props) {
           </button>
         )}
       </div>
-
+          
       <div className={styles.filters}>
         <button
           onClick={handleSortByOriginal}
