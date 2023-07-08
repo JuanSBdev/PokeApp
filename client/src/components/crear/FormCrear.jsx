@@ -3,14 +3,19 @@ import { useDispatch } from 'react-redux';
 import { createChar } from '../../redux/actions';
 import validate from './validate';
 import Styles from './Form.module.css'
-
+import axios from 'axios';
 
 export default function FormCrear() {
  
+
+  
+
+  
   let dispatch = useDispatch()
   
   const [errors, setErrors] = useState({error: 'llenar los campos obligatorios'})
   
+
       
   const [formValues, setFormValues] = useState({
 
@@ -36,7 +41,9 @@ export default function FormCrear() {
     
   };
 
-  let handleTipo = (e) => {
+
+ 
+
     const {  value } = e.target;
     setFormValues((prevValues) => {
       const newTipo = [value, ...prevValues.tipo];
@@ -65,6 +72,7 @@ export default function FormCrear() {
 
   return (
     <div className={Styles.container}>
+
       <h1>Crea tu pokemon</h1>
       <form  className={Styles.inputs} onSubmit={handleSubmit}>
         <label>Nombre*:</label>
@@ -74,11 +82,6 @@ export default function FormCrear() {
           placeholder={`'Mi pokemon'`}   />
         <p className={Styles.pError} > {errors.nombre ? errors.nombre : null }  </p>
 
-        {/* <label>imagen:</label>
-        <input type="text"
-         onChange={handleChange}
-         placeholder='Ingresa el link de tu imagen'  />
-        <p className={Styles.pError} > {errors.imagen ? errors.imagen : null }  </p> */}
 
 
         <div className={Styles.formDos}>
@@ -114,14 +117,19 @@ export default function FormCrear() {
         </div>
 
         <div className={Styles.formTres}>
-              <div className={Styles.tipo}>
+        
+
+
+
+              
+               <div className={Styles.tipo}>
                     <label>Tipo:</label>
                     <input type='text'
                      name='tipo'
                       onChange={handleTipo}
                       placeholder={`'fuego' `}  />
                     
-              </div>
+              </div> 
 
               <div className={Styles.habilidad}>
                       <label>Habilidad:</label>
@@ -143,6 +151,6 @@ export default function FormCrear() {
 
     
   )
-}
+
 
  
