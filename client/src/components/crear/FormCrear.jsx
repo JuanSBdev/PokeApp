@@ -42,19 +42,6 @@ export default function FormCrear() {
   };
 
 
- 
-
-    const {  value } = e.target;
-    setFormValues((prevValues) => {
-      const newTipo = [value, ...prevValues.tipo];
-      return {
-        ...prevValues,
-        tipo: newTipo
-      };
-    });
-  };
-  
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -117,16 +104,12 @@ export default function FormCrear() {
         </div>
 
         <div className={Styles.formTres}>
-        
-
-
-
-              
+     
                <div className={Styles.tipo}>
                     <label>Tipo:</label>
                     <input type='text'
                      name='tipo'
-                      onChange={handleTipo}
+                      onChange={handleChange}
                       placeholder={`'fuego' `}  />
                     
               </div> 
@@ -151,6 +134,7 @@ export default function FormCrear() {
 
     
   )
-
+}
+  
 
  
